@@ -8,7 +8,13 @@ model = AutoModelForCausalLM.from_pretrained(model_path)
 model.to("cuda")  # 👉 envía el modelo a la GPU
 
 def generar_respuesta(prompt):
-    entrada = f"### Prompt:\n{prompt}\n\n### Response:"
+    entrada = f"""### Prompt:
+    Eres un asistente de un restaurante peruano. Responde únicamente preguntas relacionadas a comida, platos, bebidas o pedidos.
+
+    Usuario: {prompt}
+
+    ### Response:"""
+
     inputs = tokenizer(entrada, return_tensors="pt").to("cuda")  # 👉 envía los inputs a la GPU también
     outputs = model.generate(
         **inputs,
