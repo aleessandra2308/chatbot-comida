@@ -3,11 +3,12 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from twilio.twiml.messaging_response import MessagingResponse
 from dotenv import load_dotenv
 import os
+import torch
 
 # Cargar variables de entorno desde .env
 load_dotenv()
 
-# Obtener credenciales desde variables de entorno
+# Obtener credenciales desde variables de entorno (no necesarias aún, pero listos)
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER")
@@ -17,10 +18,10 @@ app = Flask(__name__)
 
 # Ruta al modelo entrenado
 MODEL_PATH = "/workspace/chatbot-comida/models/llama3_finetuned"
+print(f"🔄 Cargando modelo desde: {MODEL_PATH}")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, local_files_only=True)
 model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, local_files_only=True)
 model.to("cuda")
-print(f"🔄 Cargando modelo desde: {MODEL_PATH}")
 
 @app.route('/whatsapp', methods=['POST'])
 def whatsapp_webhook():
@@ -28,8 +29,14 @@ def whatsapp_webhook():
     print("📥 Mensaje recibido:", incoming_msg)
 
     # Preparar el prompt para el modelo
-    input_text = f"### Prompt:\n{incoming_msg}\n\n### Response:"
-    inputs = tokenizer(input_text, return_tensors="pt")
+    input_text = f"""### Prompt:
+Eres un asistente de un restaurante peruano. Responde solo sobre comida, platos, bebidas o pedidos.
+
+Usuario: {incoming_msg}
+
+### Response:"""
+
+    inputs = tokenizer(input_text, return_tensors="pt").to("cuda")
     outputs = model.generate(
         **inputs,
         max_new_tokens=100,
