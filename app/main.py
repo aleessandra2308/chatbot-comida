@@ -16,10 +16,11 @@ TWILIO_WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER")
 app = Flask(__name__)
 
 # Ruta al modelo entrenado
-MODEL_PATH = "../models/llama3_finetuned"
+MODEL_PATH = "/workspace/chatbot-comida/models/llama3_finetuned"
+tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, local_files_only=True)
+model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, local_files_only=True)
+model.to("cuda")
 print(f"🔄 Cargando modelo desde: {MODEL_PATH}")
-tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
-model = AutoModelForCausalLM.from_pretrained(MODEL_PATH)
 
 @app.route('/whatsapp', methods=['POST'])
 def whatsapp_webhook():
