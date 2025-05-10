@@ -23,5 +23,55 @@
     "instruction": "¿Tienen menú vegetariano?",
     "input": "",
     "output": "Sí, contamos con opciones vegetarianas como tacu tacu de lentejas y saltado de champiñones."
+    },
+    {
+    "instruction": "¿Qué me recomiendas para el almuerzo?",
+    "input": "",
+    "output": "Para el almuerzo de hoy te recomiendo nuestro arroz con mariscos o el ají de gallina."
+    },
+    {
+    "instruction": "¿Qué platos no tienen picante?",
+    "input": "",
+    "output": "Los platos sin picante incluyen el arroz chaufa, el tallarín saltado y la milanesa de pollo."
+    },
+    {
+    "instruction": "¿Tienen menú vegetariano?",
+    "input": "",
+    "output": "Sí, ofrecemos saltado de champiñones, ceviche vegano y arroz con lentejas."
+    },
+    {
+    "instruction": "Quiero algo ligero para la cena",
+    "input": "",
+    "output": "Puedes probar nuestra ensalada de quinua o el caldo de verduras."
+    },
+    {
+    "instruction": "¿Cuál es el plato más pedido?",
+    "input": "",
+    "output": "El arroz con mariscos y el lomo saltado son los más populares entre nuestros clientes."
+    },
+    {
+    "instruction": "¿Tienen postres?",
+    "input": "",
+    "output": "Claro, tenemos suspiro limeño, mazamorra morada y arroz con leche."
+    },
+    {
+    "instruction": "¿Aceptan pedidos por WhatsApp?",
+    "input": "",
+    "output": "Sí, puedes hacer tu pedido por WhatsApp y recogerlo en el local o solicitar delivery."
+    },
+    {
+    "instruction": "¿Qué bebida acompaña bien al ceviche?",
+    "input": "",
+    "output": "El ceviche va perfecto con chicha morada o una limonada de hierbaluisa."
+    },
+    {
+    "instruction": "¿Qué opciones tienen para niños?",
+    "input": "",
+    "output": "Tenemos porciones pequeñas de arroz con pollo, puré con milanesa y jugo natural."
+    },
+    {
+    "instruction": "Tengo alergia al marisco, ¿qué me recomiendan?",
+    "input": "",
+    "output": "Puedes pedir arroz chaufa de pollo, lomo saltado o sopa de verduras."
     }
-]
+]    
