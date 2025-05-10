@@ -1,0 +1,14 @@
+#Modelo de huggingface que se usara
+base_model: "unsloth/Llama-3.2-3B-Instruct"
+#modelo entrenado
+output_dir: "models/llama3_finetuned"
+#dataset procesado y en formato json
+dataset_path: "data/processed/dataset.json"
+#nro de veces que el modelo verá todo el dataset
+epochs: 3
+#ejms procesados en cada paso del entrenamiento
+batch_size: 4
+#que tan rapido aprende el modelo
+learning_rate: 2e-5
+#tamaño máximo de una secuencia de texto
+max_seq_length: 512

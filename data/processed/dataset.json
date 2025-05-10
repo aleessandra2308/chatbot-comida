@@ -1,0 +1,27 @@
+[
+    {
+    "instruction": "¿Qué platos tienen hoy?",
+    "input": "",
+    "output": "Hoy ofrecemos ceviche, arroz con mariscos y ají de gallina."
+    },
+    {
+    "instruction": "¿Cuál es el horario de atención?",
+    "input": "",
+    "output": "Atendemos de lunes a sábado de 10am a 9pm."
+    },
+    {
+    "instruction": "¿Hacen entregas por delivery?",
+    "input": "",
+    "output": "Sí, realizamos entregas por delivery en Lima Metropolitana con costo adicional."
+    },
+    {
+    "instruction": "¿Puedo pagar con Yape?",
+    "input": "",
+    "output": "Claro, aceptamos pagos con Yape, Plin y transferencias bancarias."
+    },
+    {
+    "instruction": "¿Tienen menú vegetariano?",
+    "input": "",
+    "output": "Sí, contamos con opciones vegetarianas como tacu tacu de lentejas y saltado de champiñones."
+    }
+]
