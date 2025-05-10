@@ -1,29 +1,28 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
 
-# Ruta del modelo entrenado
-MODEL_PATH = "models/llama3_finetuned"
-
-# Cargar el modelo y el tokenizer
-print(f"🔄 Cargando modelo desde: {MODEL_PATH}")
-tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
-model = AutoModelForCausalLM.from_pretrained(MODEL_PATH)
+model_path = "models/llama3_finetuned"
+print(f"🔄 Cargando modelo desde: {model_path}")
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+model = AutoModelForCausalLM.from_pretrained(model_path)
+model.to("cuda")  # 👉 envía el modelo a la GPU
 
 def generar_respuesta(prompt):
-    input_text = f"### Prompt:\n{prompt}\n\n### Response:"
-    inputs = tokenizer(input_text, return_tensors="pt")
+    entrada = f"### Prompt:\n{prompt}\n\n### Response:"
+    inputs = tokenizer(entrada, return_tensors="pt").to("cuda")  # 👉 envía los inputs a la GPU también
     outputs = model.generate(
         **inputs,
         max_new_tokens=100,
         do_sample=True,
         temperature=0.7
     )
-    return tokenizer.decode(outputs[0], skip_special_tokens=True).replace(input_text, "").strip()
+    respuesta = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return respuesta.replace(entrada, "").strip()
 
-# Prueba directa
+# Prueba interactiva
 if __name__ == "__main__":
     while True:
         prompt = input("🧠 Escribe tu pregunta (o 'salir'): ")
-        if prompt.lower() == "salir":
+        if prompt.lower() in ["salir", "exit"]:
             break
-        respuesta = generar_respuesta(prompt)
-        print("🤖 Respuesta del modelo:", respuesta)
+        print("🤖 Bot:", generar_respuesta(prompt))
